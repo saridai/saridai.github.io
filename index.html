@@ -22,8 +22,30 @@
         locale: {
           format: 'DD/MM/YYYY'
         }
+      }, function(start, end, label) {
+        // Esta función se ejecuta cuando se selecciona una fecha
+        var selectedDate = start.format('YYYY-MM-DD');
+        sendDateToQuickSight(selectedDate);
       });
     });
+
+    function sendDateToQuickSight(date) {
+      var parts = date.split('-');
+      var url = 'https://tu-dashboard-quicksight.com/?' +
+                'param_anio=' + parts[0] + 
+                '&param_mes=' + parts[1] + 
+                '&param_dia=' + parts[2];
+      
+      // Envía el mensaje al padre (QuickSight)
+      window.parent.postMessage(JSON.stringify({
+        url: url,
+        parameters: {
+          param_anio: parts[0],
+          param_mes: parts[1],
+          param_dia: parts[2]
+        }
+      }), '*');
+    }
     </script>
 </body>
 </html>
