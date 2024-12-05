@@ -32,9 +32,9 @@
     function sendDateToQuickSight(date) {
       var parts = date.split('-');
       var url = 'https://eu-west-1.quicksight.aws.amazon.com/sn/accounts/346724592647/dashboards/bac02ac0-988f-417f-b258-bac08ab83f43?directory_alias=saridai-quicksight' +
-                'param_anio=' + parts[0] + 
-                '&param_mes=' + parts[1] + 
-                '&param_dia=' + parts[2];
+                'paramAnio=' + parts[0] + 
+                '&paramMes=' + parts[1] + 
+                '&paramDia=' + parts[2];
       
       // Navega a la nueva URL
       window.parent.location.href = url;
